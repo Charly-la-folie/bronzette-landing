@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merci - Bronzette.now</title>
+    <title>Accès Débloqué - Bronzette.now</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -15,6 +15,7 @@
             --dark: #0F172A;    
             --light: #F8FAFC;   
             --text-gray: #94A3B8;
+            --success: #10B981;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -65,7 +66,7 @@
         /* --- STYLES SPÉCIFIQUES MERCI --- */
         .success-icon {
             font-size: 4rem;
-            color: var(--primary);
+            color: var(--success); /* Vert succès */
             margin-bottom: 20px;
             animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
@@ -78,8 +79,21 @@
         h1 {
             font-size: 2.5rem;
             font-weight: 800;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             line-height: 1.2;
+        }
+        
+        .subtitle-access {
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            background: rgba(245, 158, 11, 0.1);
         }
 
         p {
@@ -89,10 +103,38 @@
             line-height: 1.6;
         }
 
+        /* --- LE BOUTON D'ACCÈS (Le Graal) --- */
+        .access-btn {
+            background: var(--primary);
+            color: var(--dark);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 800;
+            padding: 20px 40px;
+            border-radius: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+            transition: all 0.3s;
+            margin-bottom: 40px;
+            border: 2px solid transparent;
+        }
+
+        .access-btn:hover {
+            transform: scale(1.05);
+            background: #FFB02E;
+            box-shadow: 0 0 40px rgba(245, 158, 11, 0.6);
+        }
+        
+        .access-btn i {
+            font-size: 1.4rem;
+        }
+
         .social-links {
             display: flex;
             gap: 15px;
-            margin-top: 20px;
+            margin-top: 10px;
             flex-wrap: wrap;
             justify-content: center;
         }
@@ -101,20 +143,18 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 12px 25px;
+            padding: 10px 20px;
             border-radius: 12px;
             text-decoration: none;
             color: white;
             font-weight: 600;
+            font-size: 0.9rem;
             transition: transform 0.2s, opacity 0.2s;
             border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.05);
         }
 
-        .social-btn:hover { transform: translateY(-3px); }
-
-        .btn-insta { background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D); }
-        .btn-linkedin { background: #0077b5; }
-        .btn-home { background: rgba(255,255,255,0.1); margin-top: 40px; font-size: 0.9rem; }
+        .social-btn:hover { transform: translateY(-3px); background: rgba(255, 255, 255, 0.1); }
 
     </style>
 </head>
@@ -124,28 +164,36 @@
 
     <div class="container">
         <div class="success-icon">
-            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-lock-open"></i>
         </div>
+
+        <div class="subtitle-access">Accès Bêta Débloqué</div>
 
         <h1>Bienvenue au soleil.</h1>
         
         <p>
-            Vous êtes bien inscrit sur la liste. <br>
-            En attendant le lancement, suivez la construction de l'app en public :
+            Votre place est réservée. <br>
+            Vous faites partie des 500 premiers explorateurs. <br>
+            Attention : l'app est en Bêta, soyez indulgents avec les nuages (bugs).
+        </p>
+
+        <a href="https://map.bronzette.now" class="access-btn">
+            <i class="fas fa-map-marked-alt"></i>
+            OUVRIR LA CARTE
+        </a>
+
+        <p style="font-size: 0.9rem; margin-bottom: 15px;">
+            En attendant le chargement, rejoignez le créateur :
         </p>
 
         <div class="social-links">
-            <a href="https://www.linkedin.com/in/charles-andr%C3%A9-fresneau" target="_blank" class="social-btn btn-linkedin">
+            <a href="https://www.linkedin.com/in/charles-andr%C3%A9-fresneau" target="_blank" class="social-btn">
                 <i class="fab fa-linkedin"></i> Charles
             </a>
-            <a href="https://instagram.com/bronzette.now" target="_blank" class="social-btn btn-insta">
+            <a href="https://instagram.com/bronzette.now" target="_blank" class="social-btn">
                 <i class="fab fa-instagram"></i> @bronzette.now
             </a>
         </div>
-
-        <a href="/" class="social-btn btn-home">
-            <i class="fas fa-arrow-left"></i> Retour à l'accueil
-        </a>
     </div>
 
 </body>

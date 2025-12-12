@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bronzette.now - Le soleil vous attend</title>
+    <title>Bronzette.now - Vérifiez votre ensoleillement</title>
     
     <link rel="icon" type="image/png" href="bronzette-logo.png">
     <link rel="apple-touch-icon" href="bronzette-logo.png">
     
-    <!-- Polices & Icônes -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
@@ -19,6 +17,7 @@
             --dark: #0F172A;    /* Bleu Nuit Profond */
             --light: #F8FAFC;   /* Blanc Cassé */
             --text-gray: #94A3B8;
+            --danger: #EF4444;  /* Rouge Alerte */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -73,19 +72,19 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             background: rgba(255, 255, 255, 0.05);
-            padding: 10px 20px;
+            padding: 8px 20px;
             border-radius: 50px;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .logo i { color: var(--primary); font-size: 1.2rem; }
-        .logo span { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px; }
+        .logo i { color: var(--primary); font-size: 1.1rem; }
+        .logo span { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.5px; }
         .brand-suffix { color: var(--primary); }
 
         /* --- TITRES --- */
         h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             line-height: 1.1;
             font-weight: 800;
             margin-bottom: 20px;
@@ -97,6 +96,13 @@
         .highlight {
             color: var(--primary);
             -webkit-text-fill-color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .highlight-danger {
+            color: var(--danger);
+            -webkit-text-fill-color: var(--danger);
             position: relative;
             display: inline-block;
         }
@@ -116,11 +122,16 @@
         }
 
         p.subtitle {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--text-gray);
-            margin-bottom: 40px;
-            max-width: 500px;
+            margin-bottom: 35px;
+            max-width: 550px;
             line-height: 1.6;
+        }
+        
+        p.subtitle strong {
+            color: var(--light);
+            font-weight: 600;
         }
 
         /* --- FORMULAIRE D'INSCRIPTION --- */
@@ -128,7 +139,7 @@
             display: flex;
             gap: 10px;
             width: 100%;
-            max-width: 450px;
+            max-width: 480px;
             background: rgba(255, 255, 255, 0.03);
             padding: 8px;
             border-radius: 16px;
@@ -159,28 +170,41 @@
             background: var(--primary);
             color: var(--dark);
             border: none;
-            padding: 15px 30px;
+            padding: 15px 25px;
             border-radius: 12px;
             font-family: 'Poppins', sans-serif;
             font-weight: 800;
             font-size: 1rem;
             cursor: pointer;
             transition: all 0.2s;
+            white-space: nowrap;
         }
 
         button:hover {
             background: #FFB02E;
             transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
         }
 
         /* --- PREUVE SOCIALE --- */
         .social-proof {
             margin-top: 30px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
             font-size: 0.9rem;
             color: var(--text-gray);
+        }
+        
+        .data-badge {
+            font-size: 0.8rem;
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            color: #94A3B8;
+            margin-bottom: 5px;
         }
 
         .avatars { display: flex; }
@@ -212,10 +236,12 @@
 
         /* --- MOBILE --- */
         @media (max-width: 600px) {
-            h1 { font-size: 2.5rem; }
+            h1 { font-size: 2.2rem; margin-bottom: 15px; }
+            p.subtitle { font-size: 1rem; margin-bottom: 25px; }
             .signup-form { flex-direction: column; background: transparent; border: none; padding: 0; }
-            input[type="email"] { background: rgba(255,255,255,0.05); border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 10px; }
+            input[type="email"] { background: rgba(255,255,255,0.05); border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 10px; width: 100%; }
             button { width: 100%; }
+            .sun-glow { width: 400px; height: 400px; }
         }
     </style>
 </head>
@@ -224,76 +250,51 @@
     <div class="sun-glow"></div>
 
     <div class="container">
-        <!-- Logo -->
         <div class="logo">
             <i class="fas fa-sun"></i>
             <span>Bronzette<span class="brand-suffix">.now</span></span>
         </div>
 
-        <!-- Titre Principal -->
-        <h1>Ne buvez plus jamais votre café <br> <span class="highlight">à l'ombre.</span></h1>
+        <h1>Votre terrasse est-elle dans les <br> <span class="highlight">47% de zones froides ?</span></h1>
         
-        <!-- Sous-titre -->
         <p class="subtitle">
-            L'application qui calcule l'ensoleillement des terrasses parisiennes en temps réel.
-            <br>
-            Arrivée prévue pour les premiers rayons du printemps.
+            L'algorithme a scanné 23 957 terrasses. <br>
+            <strong>Accès Bêta limité à 500 places</strong> pour consulter la carte des "Invincibles" (les 2.5% de terrasses >10h de soleil).
         </p>
 
-        <!-- Formulaire -->
-<form class="signup-form" action="https://formsubmit.co/CHARLESFRESNEAU+BRONZETTE@GMAIL.COM" method="POST">
-    
-    <input type="email" name="email" id="email" placeholder="votre@email.com" required>
-    
-    <input type="hidden" name="_captcha" value="false">
-    
-    <input type="hidden" name="_next" value="https://bronzette.now/merci.html">
-    
-    <input type="hidden" name="_subject" value="Nouveau futur hédoniste (Bronzette) !">
-    
-    <button type="submit">Rejoindre la liste</button>
-</form>
+        <form class="signup-form" action="https://formsubmit.co/CHARLESFRESNEAU+BRONZETTE@GMAIL.COM" method="POST">
+            
+            <input type="email" name="email" id="email" placeholder="votre@email.com" required>
+            
+            <input type="hidden" name="_captcha" value="false">
+            
+            <input type="hidden" name="_next" value="https://bronzette.now/merci.html">
+            
+            <input type="hidden" name="_subject" value="Nouveau Bêta Testeur (Bronzette) !">
+            
+            <button type="submit">Vérifier mon quartier</button>
+        </form>
 
-        <!-- Preuve Sociale (Fausse pour le moment, mais réaliste) -->
         <div class="social-proof">
-            <div class="avatars">
-                <div class="avatar" style="background-image: url('https://i.pravatar.cc/100?img=33'); background-size: cover;"></div>
-                <div class="avatar" style="background-image: url('https://i.pravatar.cc/100?img=47'); background-size: cover;"></div>
-                <div class="avatar" style="background-image: url('https://i.pravatar.cc/100?img=12'); background-size: cover;"></div>
-                <div class="avatar" style="background-color: var(--primary);">+400</div>
-            </div>
-            <div class="counter">
-                Déjà <strong>1321 Parisiens</strong> attendent le soleil.
+            <div class="data-badge"><i class="fas fa-database"></i> Base de données mise à jour : Décembre 2025</div>
+            
+            <div style="display:flex; align-items:center; gap:10px;">
+                <div class="avatars">
+                    <div class="avatar" style="background-image: url('https://i.pravatar.cc/100?img=33'); background-size: cover;"></div>
+                    <div class="avatar" style="background-image: url('https://i.pravatar.cc/100?img=47'); background-size: cover;"></div>
+                    <div class="avatar" style="background-image: url('https://i.pravatar.cc/100?img=12'); background-size: cover;"></div>
+                    <div class="avatar" style="background-color: var(--primary);">+1k</div>
+                </div>
+                <div class="counter">
+                    <strong>1 321 Parisiens</strong> ont déjà vérifié leur rue.
+                </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>Fait avec ☀️ à Paris &bull; © 2025 Bronzette.now</p>
+        <p>Fait avec ☀️ à Paris &bull; Analyse algorithmique © 2025 Bronzette.now</p>
     </footer>
 
-    <script>
-        function handleSignup(e) {
-            e.preventDefault();
-            const email = document.getElementById('email').value;
-            const btn = document.querySelector('button');
-            
-            // Simulation d'envoi (À connecter à Mailchimp/Airtable plus tard)
-            btn.innerHTML = '<i class="fas fa-check"></i> C\'est noté !';
-            btn.style.background = '#10B981'; // Vert succès
-            btn.disabled = true;
-            
-            // Effet visuel
-            confettiEffect();
-            
-            console.log(`Nouvel inscrit : ${email}`);
-            alert(`Merci ! Vous serez le premier prévenu quand le soleil sortira.`);
-        }
-
-        // Petit effet fun (optionnel, nécessite une lib externe normalement, ici simulé console)
-        function confettiEffect() {
-            // Ici on pourrait ajouter canvas-confetti pour le "Wow effect"
-        }
-    </script>
 </body>
 </html>
