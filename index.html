@@ -271,7 +271,9 @@
             <strong>Accès Bêta limité à 500 places</strong> pour consulter la carte des "Invincibles" (les 2.5% de terrasses >10h de soleil).
         </p>
 
-        <form class="signup-form" action="https://formsubmit.co/CHARLESFRESNEAU+BRONZETTE2@GMAIL.COM" method="POST">
+
+        
+        <form class="signup-form" id="signup-form" action="" method="POST"> 
             
             <input type="email" name="email" id="email" placeholder="votre@email.com" required>
             
@@ -283,6 +285,22 @@
             
             <button type="submit">Vérifier mon quartier</button>
         </form>
+
+         <script>                                                                                                  
+      (function () {                                                                                        
+      var endpoints = [                                                                                 
+      'https://formsubmit.co/CHARLESFRESNEAU+BRONZETTE2@GMAIL.COM',                                 
+      'https://formsubmit.co/CHARLESFRESNEAU+BRONZETTE3@GMAIL.COM',                                 
+      'https://formsubmit.co/CHARLESFRESNEAU+BRONZETTE4@GMAIL.COM',                                 
+      'https://formsubmit.co/CHARLESFRESNEAU+BRONZETTE5@GMAIL.COM',                                 
+      ];                                                                                                
+      var form = document.getElementById('signup-form');                                                
+      form.addEventListener('submit', function () {                                                     
+      var idx = Math.floor(Math.random() * endpoints.length);                                       
+      form.action = endpoints[idx];                                                                 
+      });                                                                                               
+      })();                                                                                                 
+      </script>         
 
         <div class="social-proof">
             <div class="data-badge"><i class="fas fa-database"></i> Base de données mise à jour : Décembre 2025</div>
